@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Welcome to GitHub Pages"
+---
+
+This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:
+
+{% highlight bash %}
+$ cd your_repo_root/repo_name
+$ git fetch origin
+$ git checkout gh-pages
+{% endhighlight %}
+
+If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.
