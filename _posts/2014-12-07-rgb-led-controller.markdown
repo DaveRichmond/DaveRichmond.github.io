@@ -2,6 +2,7 @@
 layout: post
 title: 	"RGB LED Controller"
 date: 	2014-12-07 13:38:00
+author: David Richmond
 categories:	electronics led
 ---
 Intro paragraph goes here.
