@@ -13,7 +13,7 @@ My aim is to build a drop-in replacement driver.  It should work with the same r
 
 The only restrictions I've applied are based on which parts I have on hand and don't require ordering anything else (ie. left-overs from other projects). As such, the following parts will be selected based on those criteria:
 
-1. Microcontroller: NXP LPC810M021fn8 - Cortex M0+, 4KB Flash, 1KB RAM, DIP-8 Package. Selected because I ordered them from E14 a while back, recieved twice as many as I ordered, and haven't had a chance to do any further projects with them.
+1. Microcontroller: NXP LPC810M021fn8 - Cortex M0+, 4KB Flash, 1KB RAM, DIP-8 Package. Selected because I ordered them from E14 a while back, recieved twice as many as I ordered, and haven't had a chance to do any further projects with them. Also, stupidly small but powerful, gotta have a "fun" part to each project.
 2. Regulator: LM317 - Jellybean adjustable regulator.  Who doesn't have these spare? Based on digital current requirements I could've used a TO-92 78L33, but I didn't have those on hand. Absolute overkill in a TO220, but that's what I had on hand.
 3. String driver transistors: IRF820N MOSFET.  These are 10A power n-mosfets.  Slightly overspecced, but compared to the underspec job on the original drivers, who cares?
 4. MOSFET Drivers: TC4427A. Maybe with a 5V micro and a logic-level mosfet I could've got away without a mosfet driver, but even in that case it could've been debatable as to whether the mosfet would've been driven into saturation and driven quickly.  These are dual mosfet drivers, since I only have 3 mosfets one will have a non-used driver - in a future version maybe the spare could be used to provide a power-off function?
@@ -28,6 +28,8 @@ First prototype
 Before even attempting to drive a real string, what was needed was a very basic prototype with a single RGB LED, basic power supply and the microcontroller with associated debug adapters.  This was to allow nice and easy code development without too many additional requirements beyond a usb connection to power the whole setup.
 
 First difference from the final product is that all I could find was a common-anode RGB LED (with pnp bjt transistors as drivers because the LPC810 is very limited in it's output current drive).  I forgot about this later on, until I needed to un-invert the output of the PWM.
+
+![Prototype Schematic](/images/led_controller/proto1_schematic.png)
 
 TODO: Schematic
 TODO: Picture of breadboard.
