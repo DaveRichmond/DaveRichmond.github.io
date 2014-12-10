@@ -31,6 +31,8 @@ First difference from the final product is that all I could find was a common-an
 
 ![Prototype Schematic](/images/led_controller/proto1_schematic.png)
 
+FIXME: Schematic missing base resistors.
+
 At this point, we can see that several design decisions have been made.
 
 1. All pins are allocated.
