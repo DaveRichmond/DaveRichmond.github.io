@@ -12,6 +12,7 @@ Normally these also ship with a driver which provides several effect functions a
 My aim is to build a drop-in replacement driver.  It should work with the same remote, not suffer from the same design issues, and show what's possible if you don't use price as your primary design drive.
 
 The only restrictions I've applied are based on which parts I have on hand and don't require ordering anything else (ie. left-overs from other projects). As such, the following parts will be selected based on those criteria:
+
 1. Microcontroller: NXP LPC810M021fn8 - Cortex M0+, 4KB Flash, 1KB RAM, DIP-8 Package. Selected because I ordered them from E14 a while back, recieved twice as many as I ordered, and haven't had a chance to do any further projects with them.
 2. Regulator: LM317 - Jellybean adjustable regulator.  Who doesn't have these spare? Based on digital current requirements I could've used a TO-92 78L33, but I didn't have those on hand. Absolute overkill in a TO220, but that's what I had on hand.
 3. String driver transistors: IRF820N MOSFET.  These are 10A power n-mosfets.  Slightly overspecced, but compared to the underspec job on the original drivers, who cares?
