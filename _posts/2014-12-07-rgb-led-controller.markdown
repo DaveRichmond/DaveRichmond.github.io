@@ -37,6 +37,9 @@ At this point, we can see that several design decisions have been made.
 2. We had a choice between having a reset + bootloader programming setup, or full debug capability but no reset (apart from holding in reset on power-up, the IR receriver should idle high, so unless it's constantly receiving a carrier then we should come out of reset fairly quickly).  I've gone the debug route - there's no way I'll live without debugging capabilities these days (I anticipate many flame wars from "professionals" who claim that all they need for debugging is a single LED).
 3. Due to debugging, we have two pins constantly allocated to said debugger.  This overcomes most of the reset issue as a debugger can reset the microcontroller over the SWD connection - any resetting in the field will just require pulling the power.
 
+Notes section (to be removed when done)
+---------------------------------------
+
 TODO: Picture of breadboard.
 
 TODO: Finish article
