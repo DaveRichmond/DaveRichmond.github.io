@@ -4,3 +4,6 @@ markdown: kramdown
 # Site settings
 title: Dave's Electronics Blog test site
 email: dave@prstat.org
+
+# outputting
+permalink:	/:year/:month/:day/:title.html
