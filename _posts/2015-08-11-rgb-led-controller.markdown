@@ -60,6 +60,13 @@ The major changes between the prototype and this is:
 
 This design was built up on a breadboard.  On first power-on there the whole thing was just crazy.  After scratching my head for a few minutes and double checking things, my hand went straight to my forehead.  I'd connected the power for the microcontroller up to the adjustment pin on the regulator and not the output.  Fixing that, and all was good...until I realised that the colours were completely wrong.  The original design used the PWM inverted relative to this design.  A quick fix to make the output polarity configurable and everything was working as well as can be expected.
 
+The schematic itself was drawn up using Altium CircuitMaker, oh how nice it is relative to eagle.  That could be a rant all in itself, but not today.  At the time of writing I am still doing the PCB layout.
+
+Code
+----
+
+FIXME
+
 
 
 Notes section (to be removed when done)
