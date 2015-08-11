@@ -1,13 +1,19 @@
 ---
 layout: post
 title: 	"RGB LED Controller"
-date: 	2014-12-07 13:38:00
+date: 	2015-08-11 16:36:00
 author: David Richmond
 categories:	electronics led
 ---
 There are many types of LED strips available these days.  One of the most common however is essentially 3 strings (ie. an R, G & B string separate) which is driven from 12V and has a common cathode topology.  
 
-Normally these also ship with a driver which provides several effect functions and several pre-set fixed colours, and controlled via an IR remote control.  While the driver itself works, it tends to have a very low pwm rate, and if you crack one open you will notice it has been built to a price.  I suspect that on long strings (ok, longer than they normally ship with), the current draw might actually cause the driver transistors - TO-92 package - will burn.  Also, the power supply for the digital section on the drivers is typically a zener "regulator" which although works just screams "we're too cheap to even get a 5 cent 78L05, this 3.5 cent zener and 1 cent resistor will save us many dollars over the production run".
+Normally these also ship with a driver which provides several effect functions and several pre-set fixed colours, and controlled via an IR remote control.  While the driver itself works, it tends to have a very low pwm rate, and if you crack one open you will notice it has been built to a price.  I suspect that on long strings (ok, longer than they normally ship with), the current draw might actually cause the driver transistors will burn.  Also, the power supply for the digital section on the drivers is typically a zener "regulator" which although works just screams "we're too cheap to even get a 5 cent 78L05, this 3.5 cent zener and 1 cent resistor will save us many dollars over the production run".
+
+![Cheap Driver](/images/led_controller/chinese_led_controller.jpg)
+
+As we can see from the (abeit potato quality) photo of one of these drivers, they have seriously cut the BOM back.  There are obviously spaces for various components that have been skipped.  There is not a single bypass capacitor in the design.  The brains itself has the part number removed, but I'm going to assume it's a mask rom job due to the 24C02 eeprom external which must store the various colour settings. Here I also noticed that they completely skipped the I2C pullups for this eeprom - I guess they just got lucky that it "works".  The driver transistors are "A2SHB" which after a very short google session turns out to be the Vishay/Siliconix Si2302DS (http://www.vishay.com/docs/70628/70628.pdf) N-Channel MOSFET. However, this being such a cheap item, I assume they're counterfeit. Yet another cutback is visible here, there's nothing to stop the gates of the MOSFETs from floating, but the original design must've intended to have them due to the "1K" on the silkscreen near each of traces.
+
+But enough pointing out issues with their design.
 
 My aim is to build a drop-in replacement driver.  It should work with the same remote, not suffer from the same design issues, and show what's possible if you don't use price as your primary design drive.
 
@@ -39,8 +45,27 @@ At this point, we can see that several design decisions have been made.
 2. We had a choice between having a reset + bootloader programming setup, or full debug capability but no reset (apart from holding in reset on power-up, the IR receriver should idle high, so unless it's constantly receiving a carrier then we should come out of reset fairly quickly).  I've gone the debug route - there's no way I'll live without debugging capabilities these days (I anticipate many flame wars from "professionals" who claim that all they need for debugging is a single LED).
 3. Due to debugging, we have two pins constantly allocated to said debugger.  This overcomes most of the reset issue as a debugger can reset the microcontroller over the SWD connection - any resetting in the field will just require pulling the power.
 
+Final-ish Design
+----------------
+
+The prototype design was used for all the coding, but at the same time it was completely inappropriate to use for anything other than a single RGB LED.  As such, parallel to the coding, a closer to final design was implemented.
+
+![Schematic](/images/led_controller/schematic_20150811.png)
+
+The major changes between the prototype and this is:
+
+1. Power MOSFETs used in a low-side drive configuration (required due to the design of the strings).
+2. LM317-based power supply.  It's cheap, it does the job, we don't care about efficiency as the quiescent is going to be noise compared to how much power goes through the LEDs, we're running off mains so we don't need to account for every milliamp.
+3. MOSFET drivers. As mentioned earlier, they make the driving of power MOSFETs simple.  They'll drive rather large gates very fast.
+
+This design was built up on a breadboard.  On first power-on there the whole thing was just crazy.  After scratching my head for a few minutes and double checking things, my hand went straight to my forehead.  I'd connected the power for the microcontroller up to the adjustment pin on the regulator and not the output.  Fixing that, and all was good...until I realised that the colours were completely wrong.  The original design used the PWM inverted relative to this design.  A quick fix to make the output polarity configurable and everything was working as well as can be expected.
+
+
+
 Notes section (to be removed when done)
 ---------------------------------------
+
+This is a WIP (Work in Progress).
 
 TODO: Picture of breadboard.
 
@@ -59,3 +84,8 @@ TODO: Write in a more natural style
 4. schematic
 5. pcb
 6. conclusion
+
+Edits
+-----
+
+2015-08-11 - Added in photos of the original driver. Finished code.  Started proper schematic of new driver. I'm not dead, just really slow at working on projects.
