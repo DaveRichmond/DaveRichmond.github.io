@@ -1,0 +1,30 @@
+--
+layout: post
+title: "Gotcha #1: When ubuntu tells you to reboot, expect weird shit!"
+--
+
+## Gotcha #1
+This is an attempt at a series of just writing down the annoying gotchas I encounter through daily life
+
+# When Ubuntu tells you to reboot, expect werid shit!
+Very recently I was experimenting with rust on stm32 (expect posts on that soon enough). So most of my development
+I try to do using little arm boxes such as the raspberry pi and it's cheaper chinese -like systems, until such a point
+that they fall over and I have to move to a system with a **lot** more ram.
+
+So the gotcha I encountered was when I was trying to get usbd_serial working. Loaded up some example code with the
+required modificaations to get it working on the specific board I was using. Load the code into the board, linux
+enumerated the device. Good I think, then...where's the serial device. There's no /dev/ttyACM or /dev/ttyUSB device.
+Cue lots of reloading the code, making minor modifications trying seeing if maybe it wasn't continuing in far enough.
+Finally, take a look at lsmod and realise there's no usb device modules loaded at all. That's weird. Then I remember
+when I first logged in for the morning ubuntu warned me that there was a reboot pending due to a kernel update when
+I'd run apt update a few days ago. Oh crap, then I remember exactly what's happened. When ubunt updates the kernel,
+it usually removes the kernel modules package from the old (but still running) kernel. As such, it'd enumerate the 
+device and then udev would attempt to load the appropriate modules. That obviously can't be done when the modules are
+gone!
+
+One sudo reboot, a few seconds of waiting (because these little boxes usually reboot in about 30 seconds), login...and 
+**boom**! There's /dev/ttyACM0!
+
+So moral of this story, expect weird shit to happen until you do what it tells you to do. Maybe don't follow rage 
+against the machine on this one, "fuck you, I'll still do what you tell me to!". The rest of their words still stand
+because some of those who work forces are the same that burn crosses!
