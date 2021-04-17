@@ -1,7 +1,7 @@
---
+---
 layout: post
 title: "Gotcha #1: When ubuntu tells you to reboot, expect weird shit!"
---
+---
 
 ## Gotcha #1
 This is an attempt at a series of just writing down the annoying gotchas I encounter through daily life
