@@ -23,5 +23,11 @@ It was pure luck I got this far on the project without double checking the datas
 everything done correctly. It was just my own assumption and laziness with skipping what I really should've checked 
 that caused this one prototype to need some dodgy wiring to get it functional.
 
+Ideally, I should go back and add extra details to the boards silkscreen to better show the orientation of each LED.
+However we can be pretty sure out of my own laziness I'll not do that and get bitten by this again in several months.
+If there is any chance of this thing going into production, then it would be worth the time actually making that change.
+But it's one of those little projects that I've done for my self and once I get through the 5 prototype boards then 
+it'll probably never need another built again.
+
 As always, if there's any lesson to be learned here. It's that the one time you assume everything will be logically
 designed, someone will have done something backwards.
