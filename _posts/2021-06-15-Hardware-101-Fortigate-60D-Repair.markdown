@@ -1,7 +1,7 @@
---
+---
 layout: post
 title: "Hardware 101: Fortigate 60D Repair"
---
+---
 
 I guess the title of this is fairly self explanatory. Going to go through the recent repair I made on a 
 fortiate 60D firewall.
