@@ -50,7 +50,7 @@ of accepting input, and...FIRST GO!
 
 For anyone that has this issue in the future and comes across this post. Here's a hopefully useful image to help you
 out.
-![Pinout of console port](/assets/2021-06-15/fg60d-console.jpg)
+![Pinout of console port](/assets/2021-06-15/fg60d-serial.jpg)
 
 So now I had much easier access to the console. Removed the jumpers from the suspected flash jumpers. Power on, tftp,
 load as default firmware. We're booooooooting! Got to formatting the shared storage partition. This took forever
