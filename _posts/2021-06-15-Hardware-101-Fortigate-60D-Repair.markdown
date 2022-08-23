@@ -11,7 +11,7 @@ condition. It came without a power adapter (obviously this is normally a red fla
 didn't phase me too much. The cost of an official power adapter for these devices is scary, but no matter what
 I'd be able to fabracobble up something to make it work.
 
-Fairly quickly found posts on the internet detailing which connector it uses for poweras this is of the newer 
+Fairly quickly found posts on the internet detailing which connector it uses for power as this is of the newer 
 generation of fortigate gear that has moved on from barrel jacks and uses a molex style power connector. Also luckily
 there was mention of pre-terminated cables being available. With that I quickly found it on mouser as
 [part 538-245135-0210](https://au.mouser.com/ProductDetail/538-245135-0210). So next mouser order I put that item in.
@@ -33,7 +33,7 @@ enumerate earlier than the onboard. That's definitely the case for the bootloade
 onto it. But go to boot, and the onboard ends up as the primary again and that just crashes everything. So a bit more
 searching showed jumpers on the board that could be used to disable the onboard flash. They should've been labelled as
 "JUSBn" (with n for whichever jumper it was). Mine didn't have any labelled as that, but did have a group of jumpers
-set up similar. So what hurt could it do?
+set up similar. So what harm could it do?
 
 (insert image of header here)
 
@@ -56,5 +56,7 @@ So now I had much easier access to the console. Removed the jumpers from the sus
 load as default firmware. We're booooooooting! Got to formatting the shared storage partition. This took forever
 and I was worried it'd crashed. Went off for a while, came back to a factory reset fresh install!
 
+![Flash part 1](/assets/2021-06-15/fg60d-flash1.png)
+![Flash part 2](/assets/2021-06-15/fg60d-flash2.png)
 With that done, I now have a very cheap but working fortios v6 supported firewall. I'm sure this was as boring to read
 as it was to write. But maybe it'll be useful to have preserved.
