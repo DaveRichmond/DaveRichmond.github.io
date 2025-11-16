@@ -27,7 +27,7 @@ First of all, follow the docs in /python on getting it installed (create python 
 
 ## Create config
 
-$ depthcharge-inspect -c aerohive.cfg -i /dev/ttyACM0:9600
+    $ depthcharge-inspect -c aerohive.cfg -i /dev/ttyACM0:9600
 
 Replacing your serial port as required, baud rate as required (this is a weird 
 device with an old-school 9600 baud console, and I was too lazy to change it).
@@ -43,12 +43,12 @@ in the boot logs that it's a 4MB flash chip, so that's a size of 0x400000
 bytes. U-boot also usually has the variable loadaddr set to somewhere in 
 ram you can safely stick data
 
-uboot> nand read ${loadaddr} 0 0x400000
+    uboot> nand read ${loadaddr} 0 0x400000
 
 ## finally transfer it across
 
 We'll have to make a note of loadaddr as we can't just refer to the variable on other devices
-$ depthcharge-read-mem -c aerohive.cfg -a 0x10000000 -l 0x400000 -f aerohive-nand.bin
+    $ depthcharge-read-mem -c aerohive.cfg -a 0x10000000 -l 0x400000 -f aerohive-nand.bin
 
 After a really long time, we'll have our flash dumped to a file and we can now 
 analyse it for any useful tidbits like the device-tree.
