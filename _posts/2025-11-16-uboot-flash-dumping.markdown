@@ -14,12 +14,12 @@ have to worry about ordering one with the wrong pinout).
 
 First thing I got hit by is you need a password to get into u-boot on this 
 device. Thankfully they've kept the same password for a long time, and the 
-openwrt wiki/table-of-hardware has it (documented)[https://openwrt.org/toh/aerohive/hiveap-330].
+openwrt wiki/table-of-hardware has it [documented](https://openwrt.org/toh/aerohive/hiveap-330).
 
 ### Actually dumping the firmware
 
 Not wanting to reinvent the wheel, the most mentioned piece of software for this 
-is (depthcharge)[https://github.com/nccgroup/depthcharge]. Unfortunately the 
+is [depthcharge](https://github.com/nccgroup/depthcharge). Unfortunately the 
 actual documentation for using it is pretty sparse. This may not be the actual 
 way to do things, but it's what I found seemed to work.
 
