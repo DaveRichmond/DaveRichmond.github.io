@@ -48,6 +48,7 @@ ram you can safely stick data
 ## finally transfer it across
 
 We'll have to make a note of loadaddr as we can't just refer to the variable on other devices
+
     $ depthcharge-read-mem -c aerohive.cfg -a 0x10000000 -l 0x400000 -f aerohive-nand.bin
 
 After a really long time, we'll have our flash dumped to a file and we can now 
