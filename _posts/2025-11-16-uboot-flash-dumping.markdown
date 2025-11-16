@@ -3,7 +3,7 @@ layout: post
 title: U-boot flash dumping
 ---
 
-### leadin bit (forgot words)
+# leadin bit (forgot words)
 
 Right now I'm porting openwrt to a few cheap access points as a bit of fun. 
 The latest one that came across my desk is an extremenetworks aerohive ap305c. 
@@ -16,7 +16,7 @@ First thing I got hit by is you need a password to get into u-boot on this
 device. Thankfully they've kept the same password for a long time, and the 
 openwrt wiki/table-of-hardware has it [documented](https://openwrt.org/toh/aerohive/hiveap-330).
 
-### Actually dumping the firmware
+## Actually dumping the firmware
 
 Not wanting to reinvent the wheel, the most mentioned piece of software for this 
 is [depthcharge](https://github.com/nccgroup/depthcharge). Unfortunately the 
@@ -25,14 +25,14 @@ way to do things, but it's what I found seemed to work.
 
 First of all, follow the docs in /python on getting it installed (create python virtualenv, pip install).
 
-## Create config
+### Create config
 
     $ depthcharge-inspect -c aerohive.cfg -i /dev/ttyACM0:9600
 
 Replacing your serial port as required, baud rate as required (this is a weird 
 device with an old-school 9600 baud console, and I was too lazy to change it).
 
-## read flash to memory on device
+### read flash to memory on device
 
 Before we can transfer the flash, u-boot really only supports transferring data 
 from ram to other places, so we have to load the flash into ram.
@@ -45,7 +45,7 @@ ram you can safely stick data
 
     uboot> nand read ${loadaddr} 0 0x400000
 
-## finally transfer it across
+### finally transfer it across
 
 We'll have to make a note of loadaddr as we can't just refer to the variable on other devices
 
