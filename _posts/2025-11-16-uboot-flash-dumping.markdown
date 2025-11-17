@@ -49,7 +49,7 @@ ram you can safely stick data
 
 We'll have to make a note of loadaddr as we can't just refer to the variable on other devices
 
-    $ depthcharge-read-mem -c aerohive.cfg -a 0x10000000 -l 0x400000 -f aerohive-nand.bin
+    $ depthcharge-read-mem -c aerohive.cfg -a 0x10000000 -l 0x400000 -f aerohive-nand.bin -i /dev/ttyACM0:9600
 
 After a really long time, we'll have our flash dumped to a file and we can now 
 analyse it for any useful tidbits like the device-tree.
